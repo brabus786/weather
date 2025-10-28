@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from 'react';
 import styles from './styles.module.scss';
 import GoogleMapReact from 'google-map-react';
