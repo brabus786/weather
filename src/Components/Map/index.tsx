@@ -21,7 +21,7 @@ const Map: FC<Props> = ({ lat, lng }) => {
     return (
         <div className={styles.container}>
             <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyC42FhSdCWc5TAjOoP3XOVqlWSEPAVdtwk' }}
+                bootstrapURLKeys={{ key: `${process.env.NEXT_PUBLIC_MAP}` }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
                 yesIWantToUseGoogleMapApiInternals
