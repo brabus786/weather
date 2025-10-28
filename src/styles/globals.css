@@ -1,42 +1,248 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: "Poppins", sans-serif, Arial, Helvetica, sans-serif;
+  box-sizing: border-box !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.no-break {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+}
+
+div,
+ul,
+li,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+input,
+button,
+textarea,
+select,
+option,
+label,
+form,
+img,
+table,
+tr,
+td,
+th,
+tbody,
+thead,
+tfoot,
+i,
+svg,
+path,
+g,
+rect,
+circle,
+ellipse,
+line,
+polyline,
+polygon,
+mask,
+defs,
+pattern,
+text,
+tspan,
+use,
+symbol,
+title,
+article,
+aside,
+footer,
+header,
+nav,
+section,
+time,
+audio,
+video,
+canvas,
+figure,
+figcaption,
+main,
+mark,
+summary,
+template,
+del,
+ins,
+address,
+caption,
+dd,
+dl,
+dt,
+fieldset,
+legend,
+menu,
+ol,
+optgroup,
+q,
+samp,
+sub,
+sup,
+b,
+strong,
+u,
+em,
+var,
+cite,
+dfn,
+small,
+abbr,
+bdi,
+bdo,
+kbd,
+pre,
+rp,
+rt,
+ruby,
+s,
+wbr,
+button,
+input,
+textarea,
+select,
+option,
+label,
+form,
+img,
+table,
+tr,
+td,
+th,
+tbody,
+thead,
+tfoot,
+i,
+svg,
+path,
+g,
+rect,
+circle,
+ellipse,
+line,
+polyline,
+polygon,
+mask,
+defs,
+pattern,
+text,
+tspan,
+use,
+symbol,
+title,
+article,
+aside,
+footer,
+header,
+nav,
+section,
+time,
+audio,
+video,
+canvas,
+figure,
+figcaption,
+main,
+mark,
+summary,
+template,
+del,
+ins,
+address,
+caption,
+dd,
+dl,
+dt,
+fieldset,
+legend,
+menu,
+ol,
+optgroup,
+q,
+samp,
+sub,
+sup,
+b,
+strong,
+u,
+em,
+var,
+cite,
+dfn,
+small,
+abbr,
+bdi,
+bdo,
+kbd,
+pre,
+rp,
+rt,
+ruby,
+s,
+wbr {
+  box-sizing: border-box !important;
+}
+
+.container {
+  width: 1199px;
+  margin: auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
+li {
+  list-style-type: none !important;
+}
+a {
+  text-decoration: none !important;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 991px;
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+@media (max-width: 992px) {
+  .container {
+    width: 767px;
+  }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@media (max-width: 768px) {
+  .container {
+    width: 575px;
+  }
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@media (max-width: 576px) {
+  .container {
+    width: 100%;
   }
 }
