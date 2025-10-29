@@ -34,6 +34,14 @@ const PlacesAutocomplete: FC<Props> = ({ onSelectCity, onSelectCityCoordinates, 
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
+        if (!e.target.value) {
+            if (onSelectCity) {
+                onSelectCity('');
+            }
+            if (onSelectCityCoordinates) {
+                onSelectCityCoordinates(0, 0);
+            }
+        }
     };
 
     const handleSelect = (suggestion: { description: string }) => async () => {

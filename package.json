@@ -2,10 +2,11 @@
   "name": "weather",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "export PROJECT_ENV=DEV && next dev -p 4040",
+    "build": "export PROJECT_ENV=PROD && next build",
+    "start": "export PROJECT_ENV=PROD && next start -p 4041",
     "lint": "eslint"
   },
   "dependencies": {
@@ -13,21 +14,26 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.4",
     "@reduxjs/toolkit": "^2.9.2",
+    "@tanstack/react-query": "^5.90.5",
     "@types/google-map-react": "^2.1.10",
     "@types/node-geocoder": "^4.2.6",
     "axios": "^1.13.0",
     "classnames": "^2.5.1",
     "dateformat": "^5.0.3",
+    "dotenv": "^17.2.3",
     "google-map-react": "^2.2.5",
     "next": "16.0.0",
     "next-redux-wrapper": "^8.1.0",
+    "path": "^0.12.7",
     "react": "19.2.0",
     "react-cool-onclickoutside": "^1.7.0",
     "react-dom": "19.2.0",
     "react-hook-form": "^7.65.0",
     "react-redux": "^9.2.0",
+    "react-toastify": "^11.0.5",
     "sass": "^1.93.2",
-    "use-places-autocomplete": "^4.0.1"
+    "use-places-autocomplete": "^4.0.1",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/dateformat": "^5.0.3",

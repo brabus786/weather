@@ -8,22 +8,25 @@ import { CityForm } from '@/pages';
 interface Props {
     onSubmit: (data: CityForm) => void;
     city: string | undefined;
+    isLoading: boolean;
 }
 
-const SearchCity: FC<Props> = ({ onSubmit, city }) => {
+const SearchCity: FC<Props> = ({ onSubmit, city, isLoading }) => {
 
-    const { control, handleSubmit } = useFormContext<CityForm>();
+    const { control, handleSubmit, watch } = useFormContext<CityForm>();
+
+    const form = watch();
 
     return (
         <div className={styles.container} >
             <Controller
-                name="coord"
+                name="city"
                 control={control}
                 render={({ field: { onChange } }) => (
                     <PlacesAutocomplete
                         defaultValue={city}
-                        onSelectCityCoordinates={(lat, lng) => {
-                            onChange({ lat, lon: lng });
+                        onSelectCity={(city) => {
+                            onChange(city);
                         }}
                     />
                 )}
@@ -34,8 +37,9 @@ const SearchCity: FC<Props> = ({ onSubmit, city }) => {
                 variant="contained"
                 color="primary"
                 className={styles.button}
+                disabled={!form.city || isLoading}
             >
-                Search
+                Weather for {form.city || '...'}
             </Button>
         </div>
     )

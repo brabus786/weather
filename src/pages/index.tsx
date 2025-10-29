@@ -2,15 +2,12 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { getWeatherByCoordsOperation } from "@/store/weather/weatherOperations";
 import WeatherTemplate from "@/Templates/WeatherTemplate";
 import { Weather } from "@/types/type";
-import { createContext, useEffect, useMemo } from "react";
+import { createContext, useCallback, useEffect, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 
 export interface CityForm {
-  coord: {
-    lat: number;
-    lon: number;
-  };
+  city: string;
 }
 
 interface WeatherContextProps {
@@ -27,28 +24,22 @@ const WeatherPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const cityFormMethods = useForm<CityForm>()
+  const defaultCity = 'Kyiv';
 
-  const getWeatherHandler = (formData: CityForm) => {
-    dispatch(getWeatherByCoordsOperation(formData.coord.lat, formData.coord.lon));
-  }
+  const cityFormMethods = useForm<CityForm>({
+    defaultValues: { city: defaultCity }
+  })
 
-  const form = cityFormMethods.watch();
-  console.log(form);
+  const getWeatherHandler = useCallback((formData: CityForm) => {
+    dispatch(getWeatherByCoordsOperation(formData.city));
+  }, [dispatch]);
+
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        console.log(position.coords.latitude, position.coords.longitude)
-        dispatch(getWeatherByCoordsOperation(position.coords.latitude, position.coords.longitude));
-      },
-      (error) => {
-        console.error(error)
-      }
-    )
-  }, [dispatch])
+    getWeatherHandler({ city: defaultCity });
+  }, [getWeatherHandler])
 
-  const value = useMemo(() => ({ currentWeather, getWeatherHandler }), [currentWeather]);
+  const value = useMemo(() => ({ currentWeather, getWeatherHandler }), [currentWeather, getWeatherHandler]);
 
   return (
     <WeatherContext.Provider value={value}>

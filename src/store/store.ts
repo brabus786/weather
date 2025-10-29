@@ -1,9 +1,11 @@
 import { ThunkAction, Action, configureStore } from "@reduxjs/toolkit";
 import { weatherSlice } from "./weather/weatherSlice";
+import { runningProcessesSlice } from "./runningProcesses/runningProcessesSlice";
 
 export const store = configureStore({
   reducer: {
     [weatherSlice.name]: weatherSlice.reducer,
+    [runningProcessesSlice.name]: runningProcessesSlice.reducer,
   },
   devTools: true,
 });

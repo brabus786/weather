@@ -1,18 +1,29 @@
 .container {
-    border: 1px solid red;
-    padding: 30px;
-
+    position: relative;
+    padding: 60px 30px 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 
+    .progress {
+        position: absolute;
+        top: 22px;
+        left: 30px;
+        width: calc(100% - 60px);
+    }
 
-    // padding: 20px;
-    // background-color: #f5f5f5;
-    // border-radius: 8px;
-    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .map {
+        height: 100%;
+    }
+}
 
-    // &:hover {
-    //     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    // }
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+
+        .map {
+            height: 200px;
+        }
+    }
 }
