@@ -6,7 +6,6 @@ import { calculateDewPoint } from '@/utils/calculateDewPoint';
 import { getWindDirection } from '@/utils/getWindDirection';
 import Image from 'next/image';
 import SkeletonLoader from '../SceletonLoader';
-import { speedIcon } from '../atoms/icons';
 
 interface Props {
     weather: Weather | null;
