@@ -1,6 +1,3 @@
-// const dotenv = require("dotenv");
-// const path = require("path");
-
 import dotenv from "dotenv";
 import path from "path";
 
@@ -25,7 +22,6 @@ const nextConfig = {
   },
   reactStrictMode: false,
 
-  // Добавляем пустую конфигурацию Turbopack для совместимости
   turbopack: {},
 
   images: {
@@ -36,13 +32,6 @@ const nextConfig = {
       }
     ]
   },
-
-  // rewrites: async () => [
-  //   { source: `/quickbooks`, destination: '/auth/register/quickbooks' },
-  //   { source: '/xero', destination: '/auth/register/xero' },
-  //   { source: '/sage-intacct', destination: '/auth/register/sage-intacct' },
-  //   { source: '/netsuite', destination: '/auth/register/netsuite' },
-  // ],
 
   webpack(config) {
     config.module.rules.push({
@@ -64,20 +53,20 @@ const nextConfig = {
     });
 
     //SVG из assets/icons обрабатываются через @svgr/webpack (как компоненты)
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: /\.[jt]sx?$/,
-      include: path.resolve(__dirname, "src/assets/images/svrWebpack"),
-      use: ["@svgr/webpack"]
-    });
+    // config.module.rules.push({
+    //   test: /\.svg$/,
+    //   issuer: /\.[jt]sx?$/,
+    //   include: path.resolve(__dirname, "src/assets/icons"),
+    //   use: ["@svgr/webpack"]
+    // });
 
     // Остальные SVG — как обычные файлы (из assets/images и других мест)
     config.module.rules.push({
       test: /\.svg$/,
       issuer: /\.[jt]sx?$/,
       include: [
-        path.resolve(__dirname, "src/assets/images/icons"),
-        path.resolve(__dirname, "src/assets/images/loaders")
+        path.resolve(__dirname, "src/assets/icons"),
+        // path.resolve(__dirname, "src/assets/loaders")
       ],
       type: "asset/resource"
     });
@@ -87,12 +76,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-
-
-
-// const nextConfig = {
-//   /* config options here */
-//   reactStrictMode: true,
-// };
-
-// export default nextConfig;

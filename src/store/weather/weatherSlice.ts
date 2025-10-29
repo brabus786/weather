@@ -2,10 +2,10 @@ import { Weather } from "@/types/type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type WeatherProcesses = 'get_current_weather';
+
 export interface WeatherState {
   currentWeather: null | Weather;
 }
-
 
 const weatherState: WeatherState = {
   currentWeather: null,

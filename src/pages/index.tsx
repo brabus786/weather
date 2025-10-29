@@ -2,9 +2,8 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { getWeatherByCoordsOperation } from "@/store/weather/weatherOperations";
 import WeatherTemplate from "@/Templates/WeatherTemplate";
 import { Weather } from "@/types/type";
-import { createContext, useCallback, useEffect, useMemo } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-
 
 export interface CityForm {
   city: string;
@@ -13,12 +12,15 @@ export interface CityForm {
 interface WeatherContextProps {
   currentWeather: Weather | null;
   getWeatherHandler: (formData: CityForm) => void;
+  today: Date;
 }
 
 export const WeatherContext = createContext<WeatherContextProps | null>(null);
 
 
 const WeatherPage = () => {
+
+  const [today, setToday] = useState<Date>(new Date());
 
   const { currentWeather } = useAppSelector(state => state.weatherSlice);
 
@@ -31,15 +33,18 @@ const WeatherPage = () => {
   })
 
   const getWeatherHandler = useCallback((formData: CityForm) => {
-    dispatch(getWeatherByCoordsOperation(formData.city));
+    dispatch(getWeatherByCoordsOperation(formData.city, () => {
+      setToday(new Date());
+    }));
   }, [dispatch]);
-
 
   useEffect(() => {
     getWeatherHandler({ city: defaultCity });
   }, [getWeatherHandler])
 
-  const value = useMemo(() => ({ currentWeather, getWeatherHandler }), [currentWeather, getWeatherHandler]);
+  const value = useMemo(() => ({
+    currentWeather, getWeatherHandler, today
+  }), [currentWeather, getWeatherHandler, today]);
 
   return (
     <WeatherContext.Provider value={value}>

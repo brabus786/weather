@@ -6,14 +6,14 @@ import { calculateDewPoint } from '@/utils/calculateDewPoint';
 import { getWindDirection } from '@/utils/getWindDirection';
 import Image from 'next/image';
 import SkeletonLoader from '../SceletonLoader';
+import { speedIcon } from '../atoms/icons';
 
 interface Props {
     weather: Weather | null;
+    today: Date;
 }
 
-const WeatherInfo: FC<Props> = ({ weather }) => {
-
-    const today = new Date();
+const WeatherInfo: FC<Props> = ({ weather, today }) => {
 
     return (
         <div className={styles.container} >
@@ -39,16 +39,17 @@ const WeatherInfo: FC<Props> = ({ weather }) => {
             <ul className={styles.container__list}>
                 {
                     weather ? (<>
-                        <li><span>{weather?.wind.speed} m/s {getWindDirection(weather?.wind.deg || 0)}</span><span>{weather?.main.pressure} hPa</span></li>
+                        <li>
+                            <span>{weather?.wind.speed} m/s {getWindDirection(weather?.wind.deg || 0)}</span><span>{weather?.main.pressure} hPa</span></li>
                         <li><span>Humidity:{weather?.main.humidity} %</span> <span>Dew point: {calculateDewPoint(weather?.main.temp || 0, weather?.main.humidity || 0)} °C</span></li>
                         <li><span>Visibility:{(weather?.visibility || 0) / 1000} km</span></li>
                     </>) : (
                         <SkeletonLoader isLoading height={70} width={200} variant="rectangular" />
                     )
                 }
-
             </ul>
         </div>
     )
 }
+
 export default WeatherInfo;

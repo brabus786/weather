@@ -1,8 +1,9 @@
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import * as React from 'react';
+import { useEffect } from 'react';
 
-interface LinearDeterminateProps {
+interface Props {
   className?: string;
   style?: React.CSSProperties;
   height?: number;
@@ -16,10 +17,11 @@ export default function LinearProgressComponent({
   height,
   mainColor = '#1B1B1D',
   secondaryColor = '#e7e8ee',
-}: LinearDeterminateProps) {
+}: Props) {
+
   const [progress, setProgress] = React.useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {

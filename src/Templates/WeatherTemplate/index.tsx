@@ -16,7 +16,7 @@ const WeatherTemplate: FC = () => {
   const isLoading = useProcessWatcher('get_current_weather');
 
   if (!context) return null;
-  const { currentWeather, getWeatherHandler } = context;
+  const { currentWeather, getWeatherHandler, today } = context;
 
   return (
     <div className={cx('container', styles.container)} >
@@ -25,7 +25,9 @@ const WeatherTemplate: FC = () => {
 
       <WeatherInfo
         weather={currentWeather}
+        today={today}
       />
+
       <div className={styles.map}>
         {
           currentWeather && (
@@ -37,6 +39,7 @@ const WeatherTemplate: FC = () => {
           )
         }
       </div>
+
       <SearchCity
         onSubmit={getWeatherHandler}
         city={currentWeather?.name}
