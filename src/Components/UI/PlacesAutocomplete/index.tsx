@@ -14,19 +14,37 @@ interface Props {
 }
 
 const PlacesAutocomplete: FC<Props> = ({ onSelectCity, onSelectCityCoordinates, defaultValue }) => {
+
+    const placesRef = usePlacesAutocomplete({
+        requestOptions: {
+            types: ["(cities)"],
+            language: "en",
+        },
+        debounce: 300,
+        initOnMount: false,
+    });
+
     const {
         ready,
         value,
         suggestions: { status, data },
         setValue,
         clearSuggestions,
-    } = usePlacesAutocomplete({
-        requestOptions: {
-            types: ["(cities)"],
-            language: "en",
-        },
-        debounce: 300,
-    });
+    } = placesRef;
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const checkGoogleMapsLoaded = () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                if ((window?.google)?.maps?.places && typeof placesRef.init === "function") {
+                    placesRef.init();
+                }
+            };
+
+            checkGoogleMapsLoaded();
+        }
+    }, [placesRef]);
 
     const ref = useOnclickOutside(() => {
         clearSuggestions();
