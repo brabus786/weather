@@ -95,14 +95,11 @@ const PlacesAutocomplete: FC<Props> = ({ onSelectCity, onSelectCityCoordinates, 
         const maxAttempts = 50;
         const interval = setInterval(() => {
             attempts++;
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             if ((window?.google)?.maps?.places && typeof placesRef.init === "function") {
                 placesRef.init();
                 clearInterval(interval);
             } else if (attempts >= maxAttempts) {
                 clearInterval(interval);
-                console.warn("Google Maps API не загрузился после 5 секунд");
             }
         }, 100);
 
