@@ -4,12 +4,18 @@ import { createWrapper } from "next-redux-wrapper";
 import { AppStore, initStore } from "@/store/store";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
+import { APIProvider } from '@vis.gl/react-google-maps';
 
 export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <Provider store={initStore()}>
-      <Component {...pageProps} />
+      <APIProvider
+        apiKey={process.env.NEXT_PUBLIC_MAP || ''}
+        libraries={['places']}
+        language="en"
+      >
+        <Component {...pageProps} />
         <ToastContainer
           style={{ zIndex: 999999 }}
           position="top-center"
@@ -24,7 +30,8 @@ export default function App({ Component, pageProps }: AppProps) {
           className="resetToast"
           limit={1}
         />
-      </Provider>
+      </APIProvider>
+    </Provider>
   );
 }
 

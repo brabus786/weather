@@ -1,8 +1,5 @@
 import React, { FC, useEffect } from "react";
-import usePlacesAutocomplete, {
-    getGeocode,
-    getLatLng,
-} from "use-places-autocomplete";
+import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { List, ListItem, TextField } from "@mui/material";
 import styles from "./styles.module.scss";
@@ -32,20 +29,6 @@ const PlacesAutocomplete: FC<Props> = ({ onSelectCity, onSelectCityCoordinates, 
         clearSuggestions,
     } = placesRef;
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const checkGoogleMapsLoaded = () => {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                if ((window?.google)?.maps?.places && typeof placesRef.init === "function") {
-                    placesRef.init();
-                }
-            };
-
-            checkGoogleMapsLoaded();
-        }
-    }, [placesRef]);
-
     const ref = useOnclickOutside(() => {
         clearSuggestions();
     });
@@ -53,45 +36,27 @@ const PlacesAutocomplete: FC<Props> = ({ onSelectCity, onSelectCityCoordinates, 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
         if (!e.target.value) {
-            if (onSelectCity) {
-                onSelectCity('');
-            }
-            if (onSelectCityCoordinates) {
-                onSelectCityCoordinates(0, 0);
-            }
+            onSelectCity?.("");
+            onSelectCityCoordinates?.(0, 0);
         }
     };
 
     const handleSelect = (suggestion: { description: string }) => async () => {
         const { description } = suggestion;
-
         try {
             const results = await getGeocode({ address: description });
             const { lat, lng } = await getLatLng(results[0]);
+
             const addressComponents = results[0].address_components;
             const city =
-                addressComponents.find((c: {
-                    types: string[];
-                }) => c.types.includes("locality"))?.long_name ||
-                addressComponents.find((c: {
-                    types: string[];
-                }) =>
-                    c.types.includes("administrative_area_level_2")
-                )?.long_name ||
-                addressComponents.find((c: {
-                    types: string[];
-                }) =>
-                    c.types.includes("administrative_area_level_1")
-                )?.long_name ||
+                addressComponents.find((c) => c.types.includes("locality"))?.long_name ||
+                addressComponents.find((c) => c.types.includes("administrative_area_level_2"))?.long_name ||
+                addressComponents.find((c) => c.types.includes("administrative_area_level_1"))?.long_name ||
                 description;
 
             setValue(city, false);
-            if (onSelectCity) {
-                onSelectCity(city);
-            }
-            if (onSelectCityCoordinates) {
-                onSelectCityCoordinates(lat, lng);
-            }
+            onSelectCity?.(city);
+            onSelectCityCoordinates?.(lat, lng);
             clearSuggestions();
 
             console.log("📍 Coordinates:", { lat, lng });
@@ -103,15 +68,13 @@ const PlacesAutocomplete: FC<Props> = ({ onSelectCity, onSelectCityCoordinates, 
 
     const renderSuggestions = () =>
         data.map((suggestion) => {
-            const {
-                place_id,
-                structured_formatting: { main_text },
-            } = suggestion;
+            const main_text =
+                suggestion.structured_formatting?.main_text || suggestion.description || "";
 
             return (
                 <ListItem
                     className={styles.suggestion}
-                    key={place_id}
+                    key={suggestion.place_id}
                     onClick={handleSelect(suggestion)}
                 >
                     <strong>{main_text}</strong>
@@ -125,6 +88,27 @@ const PlacesAutocomplete: FC<Props> = ({ onSelectCity, onSelectCityCoordinates, 
         }
     }, [defaultValue, setValue]);
 
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        let attempts = 0;
+        const maxAttempts = 50;
+        const interval = setInterval(() => {
+            attempts++;
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            if ((window?.google)?.maps?.places && typeof placesRef.init === "function") {
+                placesRef.init();
+                clearInterval(interval);
+            } else if (attempts >= maxAttempts) {
+                clearInterval(interval);
+                console.warn("Google Maps API не загрузился после 5 секунд");
+            }
+        }, 100);
+
+        return () => clearInterval(interval);
+    }, [placesRef]);
+
     return (
         <div ref={ref} className={styles.container}>
             <TextField
@@ -135,10 +119,12 @@ const PlacesAutocomplete: FC<Props> = ({ onSelectCity, onSelectCityCoordinates, 
                 fullWidth
                 className={styles.textField}
             />
-
             {status === "OK" && <List className={styles.suggestions}>{renderSuggestions()}</List>}
         </div>
     );
 };
 
 export default PlacesAutocomplete;
+
+
+

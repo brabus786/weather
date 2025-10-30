@@ -4,11 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <script
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_MAP}&libraries=places&language=en&loading=async`}
-          // async
-          defer
-        ></script>
       </Head>
       <body>
         <Main />
