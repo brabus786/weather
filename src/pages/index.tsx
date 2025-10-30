@@ -1,3 +1,5 @@
+'use client';
+
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { getWeatherByCoordsOperation } from "@/store/weather/weatherOperations";
 import WeatherTemplate from "@/Templates/WeatherTemplate";

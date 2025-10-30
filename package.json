@@ -21,6 +21,7 @@
     "@vis.gl/react-google-maps": "^1.6.1",
     "axios": "^1.13.0",
     "classnames": "^2.5.1",
+    "core-js": "^3.46.0",
     "dateformat": "^5.0.3",
     "dotenv": "^17.2.3",
     "google-map-react": "^2.2.5",
@@ -33,6 +34,7 @@
     "react-hook-form": "^7.65.0",
     "react-redux": "^9.2.0",
     "react-toastify": "^11.0.5",
+    "regenerator-runtime": "^0.14.1",
     "sass": "^1.93.2",
     "use-places-autocomplete": "^4.0.1",
     "uuid": "^13.0.0"
@@ -45,5 +47,10 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    ">0.3%",
+    "not dead",
+    "ios_saf >= 12"
+  ]
 }

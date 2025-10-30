@@ -5,6 +5,8 @@ import { AppStore, initStore } from "@/store/store";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { APIProvider } from '@vis.gl/react-google-maps';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 export default function App({ Component, pageProps }: AppProps) {
 

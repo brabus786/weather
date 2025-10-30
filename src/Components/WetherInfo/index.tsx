@@ -39,9 +39,9 @@ const WeatherInfo: FC<Props> = ({ weather, today }) => {
                 {
                     weather ? (<>
                         <li>
-                            <span>{weather?.wind.speed} m/s {getWindDirection(weather?.wind.deg || 0)}</span><span>{weather?.main.pressure} hPa</span></li>
-                        <li><span>Humidity:{weather?.main.humidity} %</span> <span>Dew point: {calculateDewPoint(weather?.main.temp || 0, weather?.main.humidity || 0)} °C</span></li>
-                        <li><span>Visibility:{(weather?.visibility || 0) / 1000} km</span></li>
+                            <span>{weather.wind.speed} m/s {getWindDirection(weather.wind.deg || 0)}</span><span>{weather.main.pressure} hPa</span></li>
+                        <li><span>Humidity:{weather.main.humidity} %</span> <span>Dew point: {calculateDewPoint(weather.main.temp || 0, weather.main.humidity || 0)} °C</span></li>
+                        <li><span>Visibility:{(weather.visibility || 0) / 1000} km</span></li>
                     </>) : (
                         <SkeletonLoader isLoading height={70} width={200} variant="rectangular" />
                     )
