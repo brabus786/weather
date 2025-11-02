@@ -71,6 +71,23 @@ const nextConfig = {
       type: "asset/resource"
     });
 
+     config.plugins.push(
+      new NextFederationPlugin({
+        name: 'weatherApp', // 👈 имя remote-приложения
+        filename: 'static/chunks/remoteEntry.js', // 👈 точка входа, обязательна
+        exposes: {
+          './FederatedWeatherComponent': './src/components/FederatedWeatherComponent', // 👈 путь к твоему файлу
+        },
+        shared: {
+          'react': { singleton: true, requiredVersion: false },
+          'react-dom': { singleton: true, requiredVersion: false },
+          'react-hook-form': { singleton: true, requiredVersion: false },
+          '@reduxjs/toolkit': { singleton: true, requiredVersion: false },
+          'react-redux': { singleton: true, requiredVersion: false },
+        },
+      })
+    );
+
     return config;
   }
 };

@@ -2,17 +2,18 @@ import { FC, useContext } from 'react';
 import styles from './styles.module.scss';
 import cx from 'classnames';
 import WeatherInfo from '@/Components/WetherInfo';
-import { WeatherContext } from '@/pages';
 import dynamic from 'next/dynamic';
 import SearchCity from '@/Components/SearchCity';
 import LinearProgress from '@/Components/LinearProgress';
 import { useProcessWatcher } from '@/hooks/useProcessWatcher';
+import { WeatherContext } from '@/Components/FederatedWeatherComponent';
 
 const Map = dynamic(() => import('@/Components/Map'), { ssr: false });
 
 const WeatherTemplate: FC = () => {
 
   const context = useContext(WeatherContext);
+
   const isLoading = useProcessWatcher('get_current_weather');
 
   if (!context) return null;
