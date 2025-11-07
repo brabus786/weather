@@ -1,5 +1,21 @@
-import { Weather } from "@/types/type";
+import { Film, Starship, StarWarsPersonsData, Weather } from "@/types/type";
 import axios from "axios"
+
+
+export const getFilmById = async (id: number): Promise<Film> => {
+    const { data } = await axios.get(`https://sw-api.starnavi.io/films/${id}/`);
+    return data;
+}
+
+export const getStarshipById = async (id: number): Promise<Starship> => {
+    const { data } = await axios.get(`https://sw-api.starnavi.io/starships/${id}/`);
+    return data;
+}
+
+export const getPersons = async (page: number): Promise<StarWarsPersonsData> => {
+    const { data } = await axios.get(`https://sw-api.starnavi.io/people/?page=${page}`);
+    return data;
+}
 
 const weatherCache = new Map<string, { data: Weather; timestamp: number }>();
 const CACHE_DURATION = 10 * 60 * 1000;

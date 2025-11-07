@@ -1,11 +1,15 @@
 import { ThunkAction, Action, configureStore } from "@reduxjs/toolkit";
 import { weatherSlice } from "./weather/weatherSlice";
 import { runningProcessesSlice } from "./runningProcesses/runningProcessesSlice";
+import { starWarsSlice } from "./starWars/starWarsSlice";
+import { popupsSlice } from "./popups/popupsSlice";
 
 export const store = configureStore({
   reducer: {
     [weatherSlice.name]: weatherSlice.reducer,
     [runningProcessesSlice.name]: runningProcessesSlice.reducer,
+    [starWarsSlice.name]: starWarsSlice.reducer,
+    [popupsSlice.name]: popupsSlice.reducer,
   },
   devTools: true,
 });

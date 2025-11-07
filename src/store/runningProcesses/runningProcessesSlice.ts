@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { WeatherProcesses } from "../weather/weatherSlice";
+import { StarWarsProcesses } from "../starWars/starWarsSlice";
 
 
-export type ProcessType = WeatherProcesses;
+export type ProcessType = WeatherProcesses | StarWarsProcesses
 
 interface RunningProcesses {
   processes: ProcessType[];

@@ -7,6 +7,8 @@ import { ToastContainer } from "react-toastify";
 import { APIProvider } from '@vis.gl/react-google-maps';
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import PopupDespatcher from "@/Components/Popups/PopupDespatcher";
+import 'reactflow/dist/style.css';
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -18,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
         language="en"
       >
         <Component {...pageProps} />
+        <PopupDespatcher />
         <ToastContainer
           style={{ zIndex: 999999 }}
           position="top-center"

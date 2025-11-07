@@ -1,0 +1,72 @@
+@import "../variables";
+
+@mixin button-styles($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 10px 20px;
+    border: none;
+    border-radius: $borderRadiusRegular;
+    cursor: pointer;
+}
+
+@mixin text-regular-table() {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    color:#111C1F;
+}
+
+@mixin text-regular-table-header() {
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    text-align: left;
+    color:#636B6F;
+}
+
+@mixin scroll-bar() {
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        background: rgba(0,0,0, .1);
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #A6A6A6;
+        border-radius: 100px !important;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+@mixin scroll-bar-horizontal(){
+    &::-webkit-scrollbar {
+        height: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        background: rgba(0,0,0, .1);
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #A6A6A6;
+        border-radius: 100px !important;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+@mixin scroll-bar-dark() {
+    &::-webkit-scrollbar-thumb {
+        background: rgba($white, 0.2);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba($white, 0.3);
+    }
+}
