@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 import PlacesAutocomplete from '../UI/PlacesAutocomplete';
 import { Controller, useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
-import { CityForm } from '@/pages';
+import { CityForm } from '@/pages/weather';
 
 interface Props {
     onSubmit: (data: CityForm) => void;
