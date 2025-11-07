@@ -1,0 +1,239 @@
+@import '../variables.scss';
+
+@mixin placeholder {
+
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  color: #bbbbbb !important;
+}
+
+@mixin inputFontStyle {
+  color: var(--black, #0f0f0f);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  outline: none !important;
+  border: none !important;
+  width: 100%;
+}
+
+@mixin errorTextStyle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ef476f;
+  text-align: left;
+  margin-top: 4px !important;
+  width: fit-content;
+}
+
+@mixin labelStyle {
+  color: var(--grey-medium, #6c6c70);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 10px;
+  cursor: default !important;
+  display: flex;
+  //align-items: center;
+  gap: 5px;
+
+  &>img {
+    cursor: pointer;
+  }
+}
+
+@mixin disableStyle {
+  &_isDisabled {
+    pointer-events: none;
+    background-color: var(--Grey-medium, #f6f6f6) !important;
+    // color: #a6a6a6;
+    border-color: #f6f6f6;
+
+    [class*="-singleValue"] {
+      color: #a6a6a6 !important;
+      background-color: var(--Grey-medium, #f6f6f6) !important;
+    }
+
+    [class*="-valueContainer"] {
+      background-color: var(--Grey-medium, #f6f6f6) !important;
+    }
+
+    input {
+      background-color: var(--Grey-medium, #f6f6f6) !important;
+      color: #a6a6a6 !important;
+    }
+
+    &>textarea {
+      background-color: var(--Grey-medium, #f6f6f6) !important;
+      color: #a6a6a6 !important;
+    }
+  }
+
+  &_isDisabledDark {
+    pointer-events: none;
+    background-color: rgba(#fff, 0.1) !important;
+  }
+}
+
+@mixin inputContainerStyle {
+  position: relative;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid var(--grey-light, #e1e1e1);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 66px;
+  height: fit-content;
+
+  &_focus {
+    border: 1px solid var(--black, #0f0f0f) !important;
+  }
+}
+
+@mixin inputStyleV2() {
+  @include inputContainerStyle();
+
+  @include disableStyle();
+
+  &_error {
+    border: 1px solid #ef476f;
+  }
+
+  &_errorText {
+    @include errorTextStyle();
+  }
+
+  label {
+    @include labelStyle();
+    //border:1px solid red;
+  }
+
+  input {
+    @include inputFontStyle();
+
+    &::placeholder {
+      @include placeholder();
+    }
+
+    ::-webkit-input-placeholder {
+      @include placeholder();
+    }
+
+    // &:focus {
+    //     border: 1px solid $grey;
+    // }
+
+    // &:hover {
+    //     border: 1px solid $grey;
+    // }
+  }
+
+  .input {
+    @include inputFontStyle();
+
+    &::placeholder {
+      @include placeholder();
+    }
+
+    ::-webkit-input-placeholder {
+      @include placeholder();
+    }
+  }
+
+  .placeholder {
+    // React Select
+    @include placeholder();
+  }
+
+  .singleValue {
+
+    // React Select
+    &>div {
+      @include inputFontStyle();
+    }
+  }
+}
+
+@mixin controlReactAsyncSelect {
+
+  @include inputFontStyle();
+  min-height: auto !important;
+  border: none !important;
+  box-shadow: none !important;
+  position: initial !important;
+  margin-right: 22px;
+  cursor: text !important;
+
+  &:hover {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  &_valueContainer {
+    padding: 0 !important;
+    margin-right: -2px;
+    // border:1px solid green;
+    // color:red;
+  }
+
+  &_input {
+    @include inputFontStyle();
+    // border:1px solid red !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  &_placeholder {
+    @include placeholder();
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+}
+
+
+@mixin inputSearchDarkTheme($props: ()) {
+  .inputSearchDarkTheme {
+    padding: map-get($props, padding);
+
+    &>div {
+
+      input {
+        color: $white;
+        background-color: transparent;
+        border-radius: 8px;
+        border-color: transparent;
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: 0px;
+
+
+        &::placeholder {
+          color: rgba($white, 0.5);
+        }
+
+        ::-webkit-input-placeholder {
+          font-style: normal !important;
+          font-weight: normal !important;
+          font-size: 12px !important;
+          line-height: 18px !important;
+          color: rgba($white, 0.5) !important;
+        }
+
+        &:focus {
+          border-color: rgba($white, 0.5);
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 import styles from './styles.module.scss';
 import cx from 'classnames';
 import WeatherInfo from '@/Components/WetherInfo';
-import { WeatherContext } from '@/pages';
+import { WeatherContext } from '@/pages/weather';
 import dynamic from 'next/dynamic';
 import SearchCity from '@/Components/SearchCity';
 import LinearProgress from '@/Components/LinearProgress';
