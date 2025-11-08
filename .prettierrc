@@ -10,6 +10,25 @@
   "endOfLine": "lf",
   "overrides": [
     {
+      "files": ["*.ts"],
+      "options": {
+        "parser": "typescript"
+      }
+    },
+    {
+      "files": ["*.tsx"],
+      "options": {
+        "parser": "typescript",
+        "jsxSingleQuote": false
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "options": {
+        "parser": "babel"
+      }
+    },
+    {
       "files": ["*.json", "*.jsonc"],
       "options": {
         "parser": "json"

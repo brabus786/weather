@@ -33,3 +33,14 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    .content {
+      grid-template-columns: 1fr;
+    }
+  }
+}

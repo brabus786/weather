@@ -29,19 +29,37 @@
         "**/package-lock.json": true
     },
     "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit"
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.requireConfig": false,
+    "prettier.useEditorConfig": false,
+    "prettier.resolveGlobalModules": true,
+    "prettier.enable": true,
+    "prettier.enableDebugLogs": false,
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
     },
     "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
     },
     "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
     },
+    "prettier.documentSelectors": [
+        "**/*.{js,jsx,ts,tsx,json,jsonc,css,scss,md}"
+    ],
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -54,8 +72,10 @@
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "prettier.documentSelectors": ["**/*.json", "**/*.jsonc"],
+
     "files.associations": {
         "tsconfig*.json": "jsonc"
-    }
+    },
+    "npm.packageManager": "yarn",
+    "typescript.preferences.includePackageJsonAutoImports": "auto"
 }
