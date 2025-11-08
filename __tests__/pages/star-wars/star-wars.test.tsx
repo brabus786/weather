@@ -1,11 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import StarWars from "../../../src/pages/star-wars/index";
-import * as hooks from "../../../src/store/hooks";
+import StarWars from "@/pages/star-wars";
+import * as hooks from "@/store/hooks";
 import * as nextRouter from "next/router";
-import { getPersonsOperation } from "../../../src/store/starWars/starWarsOperations";
+import { getPersonsOperation } from "@/store/starWars/starWarsOperations";
 
-jest.mock("../../../src/store/hooks", () => ({
+jest.mock("@/store/hooks", () => ({
   useAppDispatch: jest.fn(),
   useAppSelector: jest.fn(),
 }));
@@ -14,7 +14,7 @@ jest.mock("next/router", () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock("../../../src/store/starWars/starWarsOperations", () => ({
+jest.mock("@/store/starWars/starWarsOperations", () => ({
   getPersonsOperation: jest.fn(),
 }));
 
@@ -63,7 +63,7 @@ describe("StarWars Page", () => {
   test("dispatches getPersonsOperation with correct page", () => {
     render(<StarWars query={{ page: "5" }} />);
 
-    expect(mockDispatch).toHaveBeenCalled();
+    expect(mockDispatch).toHaveBeenCalledTimes(1);
     expect(getPersonsOperation).toHaveBeenCalledWith(5);
     expect(mockPush).not.toHaveBeenCalled();
     expect(mockReplace).not.toHaveBeenCalled();
