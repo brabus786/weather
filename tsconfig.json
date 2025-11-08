@@ -19,8 +19,9 @@
       "@/components/*": ["src/Templates/*"],
       "@/templates/*": ["src/Templates/*"]
     },
-    "maxNodeModuleJsDepth": 1,
-    "disableSourceOfProjectReferenceRedirect": true
+    "maxNodeModuleJsDepth": 0,
+    "disableSourceOfProjectReferenceRedirect": true,
+    "assumeChangesOnlyAffectDirectDependencies": true
   },
   "include": [
     "next-env.d.ts",
