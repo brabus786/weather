@@ -6,7 +6,7 @@ export const useProcessWatcher = (processName: ProcessType) => {
   const { processes } = useAppSelector((state) => state.runningProcesses);
   const isProcess = useMemo(
     () => processes.includes(processName),
-    [processes, processName],
+    [processes, processName]
   );
   return isProcess;
 };

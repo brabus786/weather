@@ -1,7 +1,7 @@
 import { Person, StarWarsPagination, StarWarsPersonsData } from "@/types/type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type StarWarsProcesses = 'get_persons';
+export type StarWarsProcesses = "get_persons";
 
 export interface StarWarsState {
   persons: Person[];
@@ -20,16 +20,16 @@ export const starWarsSlice = createSlice({
     setPersons(state, action: PayloadAction<StarWarsPersonsData>) {
       const { results, count, next, previous } = action.payload;
       return {
-        ...state, persons: results,
+        ...state,
+        persons: results,
         pagination: {
           count,
           next,
           previous,
-        }
+        },
       };
     },
   },
 });
 
 export const { setPersons } = starWarsSlice.actions;
-

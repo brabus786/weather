@@ -1,84 +1,84 @@
-@import'../variables.scss';
+@import "../variables.scss";
 
-@mixin customersTableStyles(){
-    table {
-        width: 100%;
-        margin-bottom: 24px;
-        border-collapse: collapse;
-        color: var(--darkGrey);
+@mixin customersTableStyles() {
+  table {
+    width: 100%;
+    margin-bottom: 24px;
+    border-collapse: collapse;
+    color: var(--darkGrey);
 
-        thead {
-            tr {
-                border-bottom: 1px solid #eeeeee;
-                th {
-                    border: none;
-                    padding: 0;
-                    height: 42px;
-                }
-
-                .checkBox3State {
-                    padding: 0 12px;
-                }
-            }
+    thead {
+      tr {
+        border-bottom: 1px solid #eeeeee;
+        th {
+          border: none;
+          padding: 0;
+          height: 42px;
         }
 
-        tbody {
-            .tr {
-                height: 40px;
-                cursor: pointer;
-                border-bottom: 1px solid #eeeeee;
-
-                td {
-                    padding: 12px 12px;
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 14px;
-                    line-height: 16px;
-                    color: $darkText;
-                    text-align: start;
-                    width: max-content;
-                    max-width: 150px;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    height: 57px;
-                }
-        
-                &_isChecked {
-                    background-color: $hoverGray;
-                }
-        
-                &_isSelectedAll {
-                    background-color: #fff !important;
-                }
-        
-                &:hover {
-                    background-color: $hoverGray;
-                }
-
-                td:first-child {
-                    padding: 12px 12px;
-                    width: 1%;
-                }
-
-                .customerName {
-                    overflow: hidden;
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-            
-                    &_name {
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        max-width: 150px;
-                    }
-            
-                    &_img {
-                        height: 12px;
-                    }
-                }
-            }
+        .checkBox3State {
+          padding: 0 12px;
         }
+      }
     }
+
+    tbody {
+      .tr {
+        height: 40px;
+        cursor: pointer;
+        border-bottom: 1px solid #eeeeee;
+
+        td {
+          padding: 12px 12px;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 16px;
+          color: $darkText;
+          text-align: start;
+          width: max-content;
+          max-width: 150px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          height: 57px;
+        }
+
+        &_isChecked {
+          background-color: $hoverGray;
+        }
+
+        &_isSelectedAll {
+          background-color: #fff !important;
+        }
+
+        &:hover {
+          background-color: $hoverGray;
+        }
+
+        td:first-child {
+          padding: 12px 12px;
+          width: 1%;
+        }
+
+        .customerName {
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          &_name {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 150px;
+          }
+
+          &_img {
+            height: 12px;
+          }
+        }
+      }
+    }
+  }
 }

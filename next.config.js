@@ -9,7 +9,7 @@ const envPaths = {
 };
 
 dotenv.config({
-  path: envPaths[process.env.PROJECT_ENV]
+  path: envPaths[process.env.PROJECT_ENV],
 });
 
 const MS_PER_SECOND = 1000;
@@ -18,7 +18,7 @@ const SECONDS_PER_DAY = 86400;
 const nextConfig = {
   onDemandEntries: {
     maxInactiveAge: SECONDS_PER_DAY * MS_PER_SECOND,
-    pagesBufferLength: 100
+    pagesBufferLength: 100,
   },
   reactStrictMode: false,
 
@@ -28,9 +28,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**"
-      }
-    ]
+        hostname: "**",
+      },
+    ],
   },
 
   webpack(config) {
@@ -40,16 +40,16 @@ const nextConfig = {
         {
           loader: "url-loader",
           options: {
-            name: "[name]-[hash].[ext]"
-          }
-        }
-      ]
+            name: "[name]-[hash].[ext]",
+          },
+        },
+      ],
     });
 
     config.module.rules.push({
       test: /\.mjs$/,
       include: /node_modules/,
-      type: "javascript/auto"
+      type: "javascript/auto",
     });
 
     //SVG из assets/icons обрабатываются через @svgr/webpack (как компоненты)
@@ -68,11 +68,11 @@ const nextConfig = {
         path.resolve(__dirname, "src/assets/icons"),
         // path.resolve(__dirname, "src/assets/loaders")
       ],
-      type: "asset/resource"
+      type: "asset/resource",
     });
 
     return config;
-  }
+  },
 };
 
 export default nextConfig;

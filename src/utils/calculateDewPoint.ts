@@ -5,13 +5,12 @@
  * @returns The calculated dew point in Celsius.
  */
 
-
 export const calculateDewPoint = (tempC: number, humidity: number): number => {
-    const a = 17.27;
-    const b = 237.7;
+  const a = 17.27;
+  const b = 237.7;
 
-    const alpha = (a * tempC) / (b + tempC) + Math.log(humidity / 100);
-    const dewPoint = (b * alpha) / (a - alpha);
+  const alpha = (a * tempC) / (b + tempC) + Math.log(humidity / 100);
+  const dewPoint = (b * alpha) / (a - alpha);
 
-    return parseFloat(dewPoint.toFixed(1));
+  return parseFloat(dewPoint.toFixed(1));
 };

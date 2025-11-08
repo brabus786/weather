@@ -1,7 +1,7 @@
-import Box from '@mui/material/Box';
-import LinearProgress from '@mui/material/LinearProgress';
-import * as React from 'react';
-import { useEffect } from 'react';
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
+import * as React from "react";
+import { useEffect } from "react";
 
 interface Props {
   className?: string;
@@ -15,10 +15,9 @@ export default function LinearProgressComponent({
   className,
   style,
   height,
-  mainColor = '#1B1B1D',
-  secondaryColor = '#e7e8ee',
+  mainColor = "#1B1B1D",
+  secondaryColor = "#e7e8ee",
 }: Props) {
-
   const [progress, setProgress] = React.useState(0);
 
   useEffect(() => {
@@ -38,7 +37,7 @@ export default function LinearProgressComponent({
   }, []);
 
   return (
-    <Box sx={{ width: '100%' }} className={className} style={style}>
+    <Box sx={{ width: "100%" }} className={className} style={style}>
       <LinearProgress
         variant="determinate"
         value={progress}

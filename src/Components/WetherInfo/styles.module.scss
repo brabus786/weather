@@ -1,79 +1,79 @@
 .container {
-    //border: 1px solid red;
+  //border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__date {
+    font-size: 16px;
+    font-weight: 200;
+    margin-bottom: 10px;
+    color: #eb6e4b;
+  }
+
+  &__location {
+    font-size: 24px;
+    font-weight: 600;
+    //margin-bottom: 20px;
+    color: #333333;
+  }
+
+  &__temperature {
     display: flex;
-    flex-direction: column;
-    gap: 30px;
+    align-items: center;
+    gap: 10px;
 
-    &__date {
-        font-size: 16px;
-        font-weight: 200;
-        margin-bottom: 10px;
-        color: #eb6e4b;
+    .icon {
+      position: relative;
+      height: 55px;
+      width: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      & > img {
+        position: absolute;
+        object-fit: contain;
+      }
     }
 
-    &__location {
-        font-size: 24px;
-        font-weight: 600;
-        //margin-bottom: 20px;
-        color: #333333;
+    .temperatureValue {
+      gap: 20px;
+      font-size: 42px;
+      font-weight: 400;
+      // margin-bottom: 10px;
+      color: #333333;
     }
+  }
 
-    &__temperature {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+  &__description {
+    font-size: 18px;
+    font-weight: 400;
+    // margin-bottom: 20px;
+    color: #333333;
+  }
 
-        .icon {
-            position: relative;
-            height: 55px;
-            width: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+  &__list {
+    display: inline-block;
+    padding-left: 30px;
+    border-left: 1px solid #eb6e4b;
+    width: fit-content;
 
-            &>img {
-                position: absolute;
-                object-fit: contain;
-            }
-        }
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      //min-height: 30px;
+      color: #333333;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 300;
 
-        .temperatureValue {
-            gap: 20px;
-            font-size: 42px;
-            font-weight: 400;
-            // margin-bottom: 10px;
-            color: #333333;
-        }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
-
-    &__description {
-        font-size: 18px;
-        font-weight: 400;
-        // margin-bottom: 20px;
-        color: #333333;
-    }
-
-    &__list {
-        display: inline-block;
-        padding-left: 30px;
-        border-left: 1px solid #eb6e4b;
-        width: fit-content;
-
-        li {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-            //min-height: 30px;
-            color: #333333;
-            margin-bottom: 10px;
-            font-size: 14px;
-            font-weight: 300;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-    }
+  }
 }

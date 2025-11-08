@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+  padding: 50px 30px 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  width: calc(100vw - 40px);
+  height: calc(100vh - 40px);
+
+  .closeIcon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+
+    &:hover {
+      color: #666;
+    }
+  }
+
+  .node {
+    background-color: orangered;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+  }
+}

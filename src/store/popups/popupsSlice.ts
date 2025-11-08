@@ -1,6 +1,5 @@
-import { PopupData, PopupType } from "@/types/type";
+import { PopupData } from "@/types/type";
 import { createSlice } from "@reduxjs/toolkit";
-
 
 interface PopupsState {
   popupsData: PopupData[];
@@ -16,7 +15,7 @@ export const popupsSlice = createSlice({
   reducers: {
     addPopup(state, action: { payload: PopupData }) {
       const exists = state.popupsData.find(
-        (popup) => popup.name === action.payload.name,
+        (popup) => popup.name === action.payload.name
       );
       if (!exists) {
         return {
@@ -30,12 +29,11 @@ export const popupsSlice = createSlice({
       return {
         ...state,
         popupsData: state.popupsData.filter(
-          (popup) => popup.name !== action.payload,
+          (popup) => popup.name !== action.payload
         ),
       };
     },
   },
 });
 
-export const { addPopup, removePopup } =
-  popupsSlice.actions;
+export const { addPopup, removePopup } = popupsSlice.actions;

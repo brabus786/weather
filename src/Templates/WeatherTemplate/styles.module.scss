@@ -1,29 +1,28 @@
 .container {
-    position: relative;
-    padding: 60px 30px 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+  position: relative;
+  padding: 60px 30px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 
-    .progress {
-        position: absolute;
-        top: 22px;
-        left: 30px;
-        width: calc(100% - 60px);
-    }
+  .progress {
+    position: absolute;
+    top: 22px;
+    left: 30px;
+    width: calc(100% - 60px);
+  }
 
-    .map {
-        height: 100%;
-    }
+  .map {
+    height: 100%;
+  }
 }
 
-
 @media (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr;
+  .container {
+    grid-template-columns: 1fr;
 
-        .map {
-            height: 200px;
-        }
+    .map {
+      height: 200px;
     }
+  }
 }
