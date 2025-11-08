@@ -22,18 +22,14 @@ const nextConfig = {
   },
   reactStrictMode: false,
 
-  turbopack: {},
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
 
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
-  },
-
-  webpack(config) {
     config.module.rules.push({
       test: /\.(ogg|mp3|wav|mpe?g)$/i,
       use: [
@@ -52,27 +48,31 @@ const nextConfig = {
       type: "javascript/auto",
     });
 
-    //SVG из assets/icons обрабатываются через @svgr/webpack (как компоненты)
-    // config.module.rules.push({
-    //   test: /\.svg$/,
-    //   issuer: /\.[jt]sx?$/,
-    //   include: path.resolve(__dirname, "src/assets/icons"),
-    //   use: ["@svgr/webpack"]
-    // });
-
     // Остальные SVG — как обычные файлы (из assets/images и других мест)
     config.module.rules.push({
       test: /\.svg$/,
       issuer: /\.[jt]sx?$/,
       include: [
         path.resolve(__dirname, "src/assets/icons"),
-        // path.resolve(__dirname, "src/assets/loaders")
       ],
       type: "asset/resource",
     });
 
     return config;
   },
+
+  turbopack: {},
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
+
+
 };
 
 export default nextConfig;

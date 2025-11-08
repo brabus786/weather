@@ -19,5 +19,10 @@ module.exports = {
     "\\.(gif|ttf|eot|svg|png)$": "jest-transform-stub",
   },
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
-  testMatch: ["**/__tests__/**/*.(ts|tsx|js)", "**/*.(test|spec).(ts|tsx|js)"],
+  testMatch: [
+    "**/__tests__/**/*.(ts|tsx|js)", 
+    "**/*.(test|spec).(ts|tsx|js)",
+    "<rootDir>/__tests__/**/*.(ts|tsx|js)"
+  ],
+  roots: ["<rootDir>/src", "<rootDir>/__tests__"],
 };

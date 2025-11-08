@@ -118,7 +118,7 @@ const PersonDetailsModal: FC<PopupData> = ({ popupData, queue }) => {
   );
 
   const closePopup = () => {
-    dispatch(removePopup("hero_details"));
+    dispatch(removePopup("person_details"));
   };
 
   useEffect(() => {

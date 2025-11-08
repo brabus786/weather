@@ -1,8 +1,8 @@
-import { Person } from "@/types/type";
-import { generateHeroGraphData } from ".";
-import { getFilmById, getStarshipById } from "@/api";
+import { Person } from "../../../../src/types/type";
+import { generateHeroGraphData } from "../../../../src/Components/Popups/PersonDetailsModal";
+import { getFilmById, getStarshipById } from "../../../../src/api";
 
-jest.mock("@/api", () => ({
+jest.mock("../../../../src/api", () => ({
   getFilmById: jest.fn(),
   getStarshipById: jest.fn(),
 }));

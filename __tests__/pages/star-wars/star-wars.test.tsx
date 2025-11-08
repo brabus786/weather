@@ -1,11 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import StarWars from "./index";
-import * as hooks from "@/store/hooks";
+import StarWars from "../../../src/pages/star-wars/index";
+import * as hooks from "../../../src/store/hooks";
 import * as nextRouter from "next/router";
-import { getPersonsOperation } from "@/store/starWars/starWarsOperations";
+import { getPersonsOperation } from "../../../src/store/starWars/starWarsOperations";
 
-jest.mock("@/store/hooks", () => ({
+jest.mock("../../../src/store/hooks", () => ({
   useAppDispatch: jest.fn(),
   useAppSelector: jest.fn(),
 }));
@@ -14,7 +14,7 @@ jest.mock("next/router", () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock("@/store/starWars/starWarsOperations", () => ({
+jest.mock("../../../src/store/starWars/starWarsOperations", () => ({
   getPersonsOperation: jest.fn(),
 }));
 
