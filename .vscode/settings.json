@@ -4,10 +4,22 @@
         "ошибка"
     ],
     "typescript.preferences.maxInlayHintLength": 30,
-    "typescript.suggest.autoImports": true,
+    "typescript.suggest.autoImports": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "typescript.preferences.enableAutoWorkspaceInlayHints": false,
     "typescript.workspaceSymbols.scope": "currentProject",
+    "typescript.tsserver.maxTsServerMemory": 8192,
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "typescript.surveys.enabled": false,
+    "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "typescript.tsserver.watchOptions": {
+        "watchFile": "useFsEventsOnParentDirectory"
+    },
+    "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+    "typescript.preferences.includePackageJsonAutoImports": "off",
+    "typescript.suggest.organizeImports": false,
+    "editor.codeActionsOnSaveTimeout": 3000,
+    "typescript.validate.enable": false,
     "typescript.preferences.includeProjectDiagnostics": true,
     "typescript.tsc.autoDetect": "on",
     "files.watcherExclude": {
@@ -31,10 +43,7 @@
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
     "editor.formatOnType": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit",
-        "source.organizeImports": "explicit"
-    },
+    "editor.codeActionsOnSave": {},
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.requireConfig": false,
     "prettier.useEditorConfig": false,
@@ -77,5 +86,5 @@
         "tsconfig*.json": "jsonc"
     },
     "npm.packageManager": "yarn",
-    "typescript.preferences.includePackageJsonAutoImports": "auto"
+
 }

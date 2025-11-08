@@ -1,15 +1,16 @@
-import { FC, useContext } from "react";
-import styles from "./styles.module.scss";
-import { StarWarsContext } from "@/pages/star-wars";
-import { Pagination, Typography } from "@mui/material";
-import { useAppDispatch } from "@/store/hooks";
-import { addPopup } from "@/store/popups/popupsSlice";
 import SkeletonLoader from "@/Components/SceletonLoader";
 import { useProcessWatcher } from "@/hooks/useProcessWatcher";
+import { StarWarsContext } from "@/pages/star-wars";
+import { useAppDispatch } from "@/store/hooks";
+import { addPopup } from "@/store/popups/popupsSlice";
+import { Pagination, Typography } from "@mui/material";
+import { FC, useContext, useRef } from "react";
+import styles from "./styles.module.scss";
 
 const StarWarsTemplate: FC = () => {
   const dispatch = useAppDispatch();
   const isLoading = useProcessWatcher("get_persons");
+  const listRef = useRef<HTMLDivElement | null>(null);
 
   const context = useContext(StarWarsContext);
   if (!context) return null;
@@ -21,7 +22,7 @@ const StarWarsTemplate: FC = () => {
   return (
     <div className={styles.container}>
       <Typography variant="h5">Star Wars Characters</Typography>
-      <div className={styles.container__list}>
+      <div ref={listRef} className={styles.container__list}>
         {persons.length > 0 ? (
           <>
             {persons.map((person) => (
@@ -69,6 +70,9 @@ const StarWarsTemplate: FC = () => {
         page={query.page ? Number(query.page) : 1}
         onChange={(_e, page) => {
           paginationHandler(page);
+          if (listRef.current) {
+            listRef.current.scrollTo({ top: 0, behavior: "smooth" });
+          }
         }}
         color="primary"
       />

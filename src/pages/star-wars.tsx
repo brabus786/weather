@@ -1,10 +1,10 @@
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { getPersonsOperation } from "@/store/starWars/starWarsOperations";
 import StarWarsTemplate from "@/Templates/StarWarsTemplate";
-import { createContext, useCallback, useEffect, useMemo } from "react";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { Person, StarWarsPagination } from "@/types/type";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+import { createContext, useCallback, useEffect, useMemo } from "react";
 
 interface StarWarsContextProps {
   persons: Person[];
@@ -21,17 +21,19 @@ interface PageProps {
   query: QueryParams;
 }
 
+// Context to share Star Wars data and handlers
 export const StarWarsContext = createContext<StarWarsContextProps | null>(null);
 
 const StarWars: NextPage<PageProps> = ({ query }) => {
+  // Select persons and pagination from Redux store
   const { persons, pagination } = useAppSelector(
     (state) => state.starWarsSlice
   );
 
   const dispatch = useAppDispatch();
-
   const router = useRouter();
 
+  // Change page in URL, optionally replace history entry
   const paginationHandler = useCallback(
     (page: number, isReplace?: boolean) => {
       router[isReplace ? "replace" : "push"]({
@@ -42,6 +44,7 @@ const StarWars: NextPage<PageProps> = ({ query }) => {
     [router]
   );
 
+  // Memoize context value to avoid unnecessary renders
   const value = useMemo(
     () => ({
       query,
@@ -52,6 +55,7 @@ const StarWars: NextPage<PageProps> = ({ query }) => {
     [query, persons, pagination, paginationHandler]
   );
 
+  // Load persons data when page changes
   useEffect(() => {
     if (!query.page) {
       paginationHandler(1, true);
@@ -67,6 +71,7 @@ const StarWars: NextPage<PageProps> = ({ query }) => {
   );
 };
 
+// Pass query params from server side to props
 export const getServerSideProps = async ({ query }: PageProps) => {
   return {
     props: {

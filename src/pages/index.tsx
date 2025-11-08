@@ -5,14 +5,14 @@ import HomeTemplate from "@/Templates/HomeTemplate";
 const tasks = [
   {
     title: "Weather",
-    description: "Check the current weather in your city",
-    finishedAt: "2024-06-01",
+    description: "Test task/React (USENSE Company)",
+    finishedAt: "2024-10-29",
     url: "/weather",
   },
   {
     title: "Star Wars",
-    description: "Explore the Star Wars universe",
-    finishedAt: "2024-06-15",
+    description: "Test task/React (STARNAVI)",
+    finishedAt: "2024-11-08",
     url: "/star-wars",
   },
 ];
