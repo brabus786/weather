@@ -1,9 +1,9 @@
-import { FC } from "react";
-import styles from "./styles.module.scss";
-import cx from "classnames";
 import { Task } from "@/types/type";
 import { Typography } from "@mui/material";
+import cx from "classnames";
 import Router from "next/router";
+import { FC } from "react";
+import styles from "./styles.module.scss";
 
 interface Props {
   tasks: Task[];
