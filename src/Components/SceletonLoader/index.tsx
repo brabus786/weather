@@ -1,13 +1,9 @@
-import React, { FC } from 'react';
-import { Skeleton } from '@mui/material';
-import cx from 'classnames';
-import styles from './styles.module.scss';
+import React, { FC } from "react";
+import { Skeleton } from "@mui/material";
+import cx from "classnames";
+import styles from "./styles.module.scss";
 
-type Variant =
-  | 'circular'
-  | 'rectangular'
-  | 'rounded'
-  | 'text';
+type Variant = "circular" | "rectangular" | "rounded" | "text";
 
 interface SkeletonLoaderProps {
   isLoading: boolean;

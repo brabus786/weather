@@ -1,7 +1,6 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 @mixin placeholder {
-
   font-weight: 500;
   font-size: 15px;
   line-height: 100%;
@@ -44,7 +43,7 @@
   //align-items: center;
   gap: 5px;
 
-  &>img {
+  & > img {
     cursor: pointer;
   }
 }
@@ -70,7 +69,7 @@
       color: #a6a6a6 !important;
     }
 
-    &>textarea {
+    & > textarea {
       background-color: var(--Grey-medium, #f6f6f6) !important;
       color: #a6a6a6 !important;
     }
@@ -154,16 +153,14 @@
   }
 
   .singleValue {
-
     // React Select
-    &>div {
+    & > div {
       @include inputFontStyle();
     }
   }
 }
 
 @mixin controlReactAsyncSelect {
-
   @include inputFontStyle();
   min-height: auto !important;
   border: none !important;
@@ -196,27 +193,23 @@
     margin: 0 !important;
     padding: 0 !important;
   }
-
 }
-
 
 @mixin inputSearchDarkTheme($props: ()) {
   .inputSearchDarkTheme {
     padding: map-get($props, padding);
 
-    &>div {
-
+    & > div {
       input {
         color: $white;
         background-color: transparent;
         border-radius: 8px;
         border-color: transparent;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         font-weight: 400;
         font-size: 12px;
         line-height: 18px;
         letter-spacing: 0px;
-
 
         &::placeholder {
           color: rgba($white, 0.5);

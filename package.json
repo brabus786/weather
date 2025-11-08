@@ -7,7 +7,9 @@
     "dev": "export PROJECT_ENV=DEV && next dev -p 4040",
     "build": "export PROJECT_ENV=PROD && next build",
     "start": "export PROJECT_ENV=PROD && next start -p 4041",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -17,6 +19,8 @@
     "@reduxjs/toolkit": "^2.9.2",
     "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.90.5",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
     "@types/google-map-react": "^2.1.10",
     "@types/node-geocoder": "^4.2.6",
     "@vis.gl/react-google-maps": "^1.6.1",
@@ -42,12 +46,21 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
     "@types/dateformat": "^5.0.3",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "ignore-loader": "^0.1.2",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "jsdom": "^27.1.0",
+    "prettier": "^3.6.2",
+    "ts-jest": "^29.4.5",
     "typescript": "^5"
   },
   "browserslist": [

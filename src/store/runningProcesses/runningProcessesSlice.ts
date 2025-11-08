@@ -2,8 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { WeatherProcesses } from "../weather/weatherSlice";
 import { StarWarsProcesses } from "../starWars/starWarsSlice";
 
-
-export type ProcessType = WeatherProcesses | StarWarsProcesses
+export type ProcessType = WeatherProcesses | StarWarsProcesses;
 
 interface RunningProcesses {
   processes: ProcessType[];
@@ -24,7 +23,7 @@ export const runningProcessesSlice = createSlice({
     },
     removeProcess(state, action: { payload: ProcessType }) {
       state.processes = state.processes.filter(
-        (process) => process !== action.payload,
+        (process) => process !== action.payload
       );
     },
     clearProcesses(state) {

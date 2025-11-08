@@ -1,0 +1,5 @@
+@use "@/styles/mixins/starWar.scss" as starWar;
+
+.container {
+  @include starWar.customNode(#ffe564, #ffc700);
+}

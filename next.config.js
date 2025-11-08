@@ -9,7 +9,7 @@ const envPaths = {
 };
 
 dotenv.config({
-  path: envPaths[process.env.PROJECT_ENV]
+  path: envPaths[process.env.PROJECT_ENV],
 });
 
 const MS_PER_SECOND = 1000;
@@ -18,47 +18,35 @@ const SECONDS_PER_DAY = 86400;
 const nextConfig = {
   onDemandEntries: {
     maxInactiveAge: SECONDS_PER_DAY * MS_PER_SECOND,
-    pagesBufferLength: 100
+    pagesBufferLength: 100,
   },
   reactStrictMode: false,
 
-  turbopack: {},
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
 
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**"
-      }
-    ]
-  },
-
-  webpack(config) {
     config.module.rules.push({
       test: /\.(ogg|mp3|wav|mpe?g)$/i,
       use: [
         {
           loader: "url-loader",
           options: {
-            name: "[name]-[hash].[ext]"
-          }
-        }
-      ]
+            name: "[name]-[hash].[ext]",
+          },
+        },
+      ],
     });
 
     config.module.rules.push({
       test: /\.mjs$/,
       include: /node_modules/,
-      type: "javascript/auto"
+      type: "javascript/auto",
     });
-
-    //SVG из assets/icons обрабатываются через @svgr/webpack (как компоненты)
-    // config.module.rules.push({
-    //   test: /\.svg$/,
-    //   issuer: /\.[jt]sx?$/,
-    //   include: path.resolve(__dirname, "src/assets/icons"),
-    //   use: ["@svgr/webpack"]
-    // });
 
     // Остальные SVG — как обычные файлы (из assets/images и других мест)
     config.module.rules.push({
@@ -66,13 +54,25 @@ const nextConfig = {
       issuer: /\.[jt]sx?$/,
       include: [
         path.resolve(__dirname, "src/assets/icons"),
-        // path.resolve(__dirname, "src/assets/loaders")
       ],
-      type: "asset/resource"
+      type: "asset/resource",
     });
 
     return config;
-  }
+  },
+
+  turbopack: {},
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
+
+
 };
 
 export default nextConfig;
