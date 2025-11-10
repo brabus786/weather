@@ -11,9 +11,10 @@
   padding: 16px;
   opacity: 0;
   animation: fadeIn 0.3s forwards;
+  z-index: 100; // Default z-index
 
   &_isFocused {
-    z-index: 1000;
+    z-index: 1000; // Higher z-index when focused
   }
 
   @keyframes fadeIn {

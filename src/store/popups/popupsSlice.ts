@@ -23,7 +23,13 @@ export const popupsSlice = createSlice({
           popupsData: [...state.popupsData, action.payload],
         };
       }
-      return state;
+      const filteredPopups = state.popupsData.filter(
+        (popup) => popup.name !== action.payload.name
+      );
+      return {
+        ...state,
+        popupsData: [action.payload, ...filteredPopups],
+      };
     },
     removePopup(state, action: { payload: string }) {
       return {

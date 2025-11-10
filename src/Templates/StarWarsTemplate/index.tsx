@@ -51,16 +51,22 @@ const StarWarsTemplate: FC = () => {
           </>
         ) : (
           <>
-            {[...Array(10)].map((_, index) => (
-              <SkeletonLoader
-                className={styles.personLoader}
-                key={index}
-                isLoading
-                height={68}
-                width={`100%`}
-                variant="rectangular"
-              />
-            ))}
+            {isLoading ? (
+              <>
+                {[...Array(10)].map((_, index) => (
+                  <SkeletonLoader
+                    className={styles.personLoader}
+                    key={index}
+                    isLoading
+                    height={68}
+                    width={`100%`}
+                    variant="rectangular"
+                  />
+                ))}
+              </>
+            ) : (
+              <Typography variant="body1">No characters found.</Typography>
+            )}
           </>
         )}
       </div>
