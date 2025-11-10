@@ -109,7 +109,7 @@ export const generateHeroGraphData = async (person: Person) => {
   return { nodes, edges };
 };
 
-const PersonDetailsModal: FC<PopupData> = ({ popupData, queue }) => {
+const PersonDetailsPopup: FC<PopupData> = ({ popupData, queue }) => {
   const person = popupData as Person;
   const dispatch = useAppDispatch();
 
@@ -162,4 +162,4 @@ const PersonDetailsModal: FC<PopupData> = ({ popupData, queue }) => {
   );
 };
 
-export default PersonDetailsModal;
+export default PersonDetailsPopup;

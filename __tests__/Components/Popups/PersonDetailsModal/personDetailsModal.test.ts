@@ -1,5 +1,5 @@
 import { Person } from "../../../../src/types/type";
-import { generateHeroGraphData } from "../../../../src/Components/Popups/PersonDetailsModal";
+import { generateHeroGraphData } from "../../../../src/Components/Popups/PersonDetailsPopup";
 import { getFilmById, getStarshipById } from "../../../../src/api";
 
 jest.mock("../../../../src/api", () => ({

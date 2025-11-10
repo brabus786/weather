@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import PersonDetailsModal from "../PersonDetailsModal";
+import PersonDetailsModal from "../PersonDetailsPopup";
 import { PopupData, PopupType } from "@/types/type";
 import { useAppSelector } from "@/store/hooks";
 

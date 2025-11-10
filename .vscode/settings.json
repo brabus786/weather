@@ -19,7 +19,7 @@
     "typescript.preferences.includePackageJsonAutoImports": "off",
     "typescript.suggest.organizeImports": false,
     "editor.codeActionsOnSaveTimeout": 3000,
-    "typescript.validate.enable": false,
+    "typescript.validate.enable": true,
     "typescript.preferences.includeProjectDiagnostics": true,
     "typescript.tsc.autoDetect": "on",
     "files.watcherExclude": {
