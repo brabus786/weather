@@ -3,6 +3,8 @@ import axios from "axios";
 import camelcaseKeys from "camelcase-keys";
 import { toast } from "react-toastify";
 
+// API for Star Wars data fetching
+
 const api = axios.create({
   baseURL:
     process.env.NEXT_PUBLIC_SW_API_BASE_URL || "https://sw-api.starnavi.io/api",
