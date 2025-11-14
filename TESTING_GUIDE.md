@@ -1,33 +1,33 @@
-# Рекомендации по тестированию Star Wars функционала
+# Star Wars Functionality Testing Guide
 
-## ✅ Реализованные тесты
+## ✅ Implemented Tests
 
 ### 1. **Graph Data Generation Tests** (`generateHeroGraphData.test.ts`)
 
-- ✅ Базовая функциональность генерации графа
-- ✅ Обработка героя без фильмов и кораблей
-- ✅ Фильмы без соответствующих кораблей героя
-- ✅ Правильное позиционирование узлов
-- ✅ Множественные фильмы с кораблями
-- ✅ Исключение дублирования узлов кораблей
-- ✅ Анимированные связи
-- ✅ Обработка ошибок API
+- ✅ Basic graph generation functionality
+- ✅ Hero handling without films and starships
+- ✅ Films without corresponding hero starships
+- ✅ Proper node positioning
+- ✅ Multiple films with starships
+- ✅ Starship node deduplication
+- ✅ Animated connections
+- ✅ API error handling
 
 ### 2. **Redux State Management Tests**
 
-- ✅ `starWarsRedux.test.ts` - slice и operations
-- ✅ `popupsSlice.test.ts` - управление попапами
-- ✅ Обработка успешных и неудачных API вызовов
-- ✅ Правильное обновление состояния
-- ✅ Обработка процессов загрузки
+- ✅ `starWarsRedux.test.ts` - slice and operations
+- ✅ `popupsSlice.test.ts` - popup management
+- ✅ Successful and failed API call handling
+- ✅ Proper state updates
+- ✅ Loading process handling
 
 ### 3. **Page Component Tests** (`star-wars.test.tsx`)
 
-- ✅ Правильная пагинация
-- ✅ Диспетчеризация операций
-- ✅ Обработка query параметров
+- ✅ Proper pagination
+- ✅ Operation dispatching
+- ✅ Query parameter handling
 
-## 🔧 Дополнительные тесты (рекомендуемые)
+## 🔧 Additional Tests (Recommended)
 
 ### 1. **API Layer Tests**
 
@@ -73,11 +73,11 @@ describe("StarWarsTemplate", () => {
 });
 ```
 
-### 4. **PopupDespatcher Tests**
+### 4. **PopupDispatcher Tests**
 
 ```typescript
-// __tests__/Components/Popups/PopupDespatcher/
-describe("PopupDespatcher", () => {
+// __tests__/Components/Popups/PopupDispatcher/
+describe("PopupDispatcher", () => {
   test("should render correct popup component");
   test("should handle queue management");
   test("should support multiple popup types");
@@ -128,68 +128,68 @@ describe("Accessibility", () => {
 });
 ```
 
-## 🎯 Приоритетные области для тестирования
+## 🎯 Priority Testing Areas
 
 ### High Priority
 
-1. **API Error Handling** - критически важно для UX
-2. **Graph Data Integrity** - основная функциональность
-3. **Redux State Consistency** - предотвращение багов в состоянии
+1. **API Error Handling** - critical for UX
+2. **Graph Data Integrity** - core functionality
+3. **Redux State Consistency** - prevents state bugs
 
 ### Medium Priority
 
-4. **Component UI Behavior** - пользовательский интерфейс
-5. **Navigation & Routing** - пагинация и переходы
-6. **Loading States** - обратная связь пользователю
+4. **Component UI Behavior** - user interface
+5. **Navigation & Routing** - pagination and transitions
+6. **Loading States** - user feedback
 
 ### Low Priority
 
-7. **Edge Cases** - редкие сценарии
-8. **Performance** - оптимизация
-9. **Accessibility** - доступность
+7. **Edge Cases** - rare scenarios
+8. **Performance** - optimization
+9. **Accessibility** - accessibility compliance
 
-## 📊 Текущее покрытие
+## 📊 Current Coverage
 
-**Файлы с тестами:**
+**Files with tests:**
 
 - ✅ Graph generation logic
 - ✅ Redux state management
 - ✅ Page components
 - ✅ Popup management
-- ❌ API layer (требует дополнительной настройки)
-- ❌ UI components (требует mock'ов)
-- ❌ Custom nodes (требует ReactFlow setup)
+- ❌ API layer (requires additional setup)
+- ❌ UI components (requires mocks)
+- ❌ Custom nodes (requires ReactFlow setup)
 
-**Общее покрытие: ~70% основной функциональности**
+**Overall coverage: ~70% of core functionality**
 
-## 🚀 Команды для запуска
+## 🚀 Running Commands
 
 ```bash
-# Все тесты
+# All tests
 yarn jest
 
-# С покрытием
+# With coverage
 yarn jest --coverage
 
-# Конкретный тест
+# Specific test
 yarn jest generateHeroGraphData.test.ts
 
 # Watch mode
 yarn jest --watch
 
-# Только обновленные файлы
+# Only updated files
 yarn jest -o
 ```
 
-## 🔍 Debugging тестов
+## 🔍 Test Debugging
 
 ```bash
-# Debug конкретный тест
+# Debug specific test
 node --inspect-brk node_modules/.bin/jest generateHeroGraphData.test.ts --runInBand
 
-# Подробный вывод
+# Verbose output
 yarn jest --verbose --no-cache
 
-# Тестирование с логами
+# Testing with logs
 yarn jest --silent=false
 ```
