@@ -1,7 +1,14 @@
 import "@testing-library/jest-dom";
 import React from "react";
 
-// Мокаем Next.js Image компонент
+// Setup environment variables for tests
+process.env.NEXT_PUBLIC_SW_API_BASE_URL = "https://sw-api.starnavi.io/api";
+process.env.NEXT_PUBLIC_WEATHERAPI_BASE_URL =
+  "https://api.openweathermap.org/data/2.5";
+process.env.NEXT_PUBLIC_WEATHERAPI = "test-weather-api-key";
+process.env.NEXT_PUBLIC_MAP = "test-google-maps-api-key";
+
+// Mock Next.js Image component
 jest.mock("next/image", () => ({
   __esModule: true,
   default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
@@ -9,7 +16,7 @@ jest.mock("next/image", () => ({
   },
 }));
 
-// Мокаем next/router
+// Mock next/router
 jest.mock("next/router", () => ({
   useRouter: jest.fn(() => ({
     push: jest.fn(),
@@ -18,7 +25,7 @@ jest.mock("next/router", () => ({
   })),
 }));
 
-// Глобальные моки для window объектов, которые могут отсутствовать в тестовой среде
+// Global mocks for window objects that might be missing in test environment
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
@@ -33,27 +40,15 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-// Мокаем IntersectionObserver
-(global as any).IntersectionObserver = class IntersectionObserver {
-  root = null;
-  rootMargin = "";
-  thresholds = [];
-  
-  constructor() {}
-  
-  observe() {
-    return null;
-  }
-  
-  disconnect() {
-    return null;
-  }
-  
-  unobserve() {
-    return null;
-  }
-  
-  takeRecords() {
-    return [];
-  }
-};
+// Mock IntersectionObserver
+(global as Record<string, unknown>).IntersectionObserver = jest
+  .fn()
+  .mockImplementation(() => ({
+    root: null,
+    rootMargin: "",
+    thresholds: [],
+    observe: jest.fn(),
+    disconnect: jest.fn(),
+    unobserve: jest.fn(),
+    takeRecords: jest.fn(() => []),
+  }));

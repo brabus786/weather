@@ -17,7 +17,7 @@ export const starWarsSlice = createSlice({
   name: "starWarsSlice",
   initialState: starWarsState,
   reducers: {
-    setPersons(state, action: PayloadAction<StarWarsPersonsData>) {
+    setPersons(state, action: PayloadAction<StarWarsPersonsData<Person[]>>) {
       const { results, count, next, previous } = action.payload;
       return {
         ...state,

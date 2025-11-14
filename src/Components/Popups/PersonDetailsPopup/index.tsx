@@ -1,4 +1,3 @@
-import { getFilmById, getStarshipById } from "@/api";
 import { useAppDispatch } from "@/store/hooks";
 import { removePopup } from "@/store/popups/popupsSlice";
 import { GraphEdge, GraphNode, Person, PopupData } from "@/types/type";
@@ -17,17 +16,26 @@ import FilmNode from "./CustomNodes/FilmNode";
 import HeroNode from "./CustomNodes/HeroNode";
 import StarshipNode from "./CustomNodes/StarshipNode";
 import styles from "./styles.module.scss";
+import { getFilmByIds, getStarshipByIds } from "@/api/starWars";
 
 // Function to load all film data by a list of their IDs
 const getFilmsFromPerson = async (ids: number[]) => {
-  const filmPromises = ids.map((id) => getFilmById(id));
-  return Promise.all(filmPromises);
+  if (ids.length === 0) return [];
+  const response = await getFilmByIds(ids.join(","));
+  if (response?.results) {
+    return response.results;
+  }
+  return [];
 };
 
 // Function to load all starship data by a list of their IDs
 const getStarshipsFromPerson = async (ids: number[]) => {
-  const starshipPromises = ids.map((id) => getStarshipById(id));
-  return Promise.all(starshipPromises);
+  if (ids.length === 0) return [];
+  const starshipPromises = await getStarshipByIds(ids.join(","));
+  if (starshipPromises?.results) {
+    return starshipPromises.results;
+  }
+  return [];
 };
 
 // Main function to generate hero graph data: nodes and edges
@@ -54,7 +62,7 @@ export const generateHeroGraphData = async (person: Person) => {
     const filmY = filmIndex * 150;
 
     // Check if the hero has starships in this film
-    const isStarship = film.starships.some((starshipId) =>
+    const isStarship = film.starships.some((starshipId: number) =>
       person.starships.includes(starshipId)
     );
 
@@ -75,11 +83,11 @@ export const generateHeroGraphData = async (person: Person) => {
     });
 
     // Add starship nodes that hero owns and that appear in this film
-    const heroStarshipsInFilm = film.starships.filter((starshipId) =>
+    const heroStarshipsInFilm = film.starships.filter((starshipId: number) =>
       person.starships.includes(starshipId)
     );
 
-    heroStarshipsInFilm.forEach((starshipId, shipIndex) => {
+    heroStarshipsInFilm.forEach((starshipId: number, shipIndex: number) => {
       if (!starshipId) return;
       const starship = starships.find((s) => s?.id === starshipId);
       if (!starship) return;
@@ -110,7 +118,7 @@ export const generateHeroGraphData = async (person: Person) => {
 };
 
 const PersonDetailsPopup: FC<PopupData> = ({ popupData, queue }) => {
-  const person = popupData as Person;
+  const person = popupData as Person | undefined;
   const dispatch = useAppDispatch();
 
   // State for graph nodes and edges
@@ -140,6 +148,7 @@ const PersonDetailsPopup: FC<PopupData> = ({ popupData, queue }) => {
 
   // Load data and set nodes/edges on mount and when person changes
   useEffect(() => {
+    if (!person) return;
     generateHeroGraphData(person).then(({ nodes, edges }) => {
       setNodes(nodes);
       setEdges(edges);

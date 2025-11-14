@@ -8,7 +8,7 @@ const PixiFirst: FC = () => {
 
   useEffect(() => {
     const initPixi = async () => {
-      // Создаем приложение с новым синтаксисом для PixiJS 8.x
+      // Create application with new syntax for PixiJS 8.x
       const app = new PIXI.Application();
       await app.init({
         width: 800,
@@ -20,7 +20,7 @@ const PixiFirst: FC = () => {
         containerRef.current.appendChild(app.canvas);
       }
 
-      // Создаем простую графику для демонстрации
+      // Create simple graphics for demonstration
       const graphics = new PIXI.Graphics();
       graphics.circle(400, 200, 50);
       graphics.fill(0xff0000);

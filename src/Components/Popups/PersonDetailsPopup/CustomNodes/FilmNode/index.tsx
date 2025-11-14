@@ -16,7 +16,7 @@ const FilmNode: FC<NodeProps<{ film: Film; isStarship: boolean }>> = ({
       <ul className={styles.details}>
         <li>Director: {film.director}</li>
         <li>Producer: {film.producer}</li>
-        <li>Release Date: {film.release_date}</li>
+        <li>Release Date: {film.releaseDate}</li>
       </ul>
       {isStarship && <Handle type="source" position={Position.Right} id="b" />}
     </div>

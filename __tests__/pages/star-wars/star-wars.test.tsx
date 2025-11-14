@@ -1,4 +1,3 @@
-import React from "react";
 import { render } from "@testing-library/react";
 import StarWars from "@/pages/star-wars";
 import * as hooks from "@/store/hooks";

@@ -1,35 +1,19 @@
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import {
+  StarWarsContext,
+  StarWarsQueryParams,
+} from "@/contexts/StarWarsContext";
+import { useAppDispatch } from "@/store/hooks";
 import { getPersonsOperation } from "@/store/starWars/starWarsOperations";
 import StarWarsTemplate from "@/Templates/StarWarsTemplate";
-import { Person, StarWarsPagination } from "@/types/type";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { createContext, useCallback, useEffect, useMemo } from "react";
-
-interface StarWarsContextProps {
-  persons: Person[];
-  pagination: StarWarsPagination | null;
-  paginationHandler: (page: number) => void;
-  query: QueryParams;
-}
-
-interface QueryParams {
-  page?: string;
-}
+import { useCallback, useEffect, useMemo } from "react";
 
 interface PageProps {
-  query: QueryParams;
+  query: StarWarsQueryParams;
 }
 
-// Context to share Star Wars data and handlers
-export const StarWarsContext = createContext<StarWarsContextProps | null>(null);
-
 const StarWars: NextPage<PageProps> = ({ query }) => {
-  // Select persons and pagination from Redux store
-  const { persons, pagination } = useAppSelector(
-    (state) => state.starWarsSlice
-  );
-
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -48,11 +32,9 @@ const StarWars: NextPage<PageProps> = ({ query }) => {
   const value = useMemo(
     () => ({
       query,
-      persons,
-      pagination,
       paginationHandler,
     }),
-    [query, persons, pagination, paginationHandler]
+    [query, paginationHandler]
   );
 
   // Load persons data when page changes
