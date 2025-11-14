@@ -1,4 +1,3 @@
-import { getWeatherByCity } from "@/api";
 import { Dispatch } from "redux";
 import { setCurrentWeather } from "./weatherSlice";
 import { toast } from "react-toastify";
@@ -6,6 +5,7 @@ import {
   addProcess,
   removeProcess,
 } from "../runningProcesses/runningProcessesSlice";
+import { getWeatherByCity } from "@/api/weather";
 
 export const getWeatherByCoordsOperation =
   (city: string, callback?: () => void) => async (dispatch: Dispatch) => {

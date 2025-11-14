@@ -2,23 +2,23 @@ export type CustomNodeType = "heroNode" | "filmNode" | "starshipNode";
 
 export interface Starship {
   MGLT: string;
-  cargo_capacity: string;
+  cargoCapacity: string;
   consumables: string;
-  cost_in_credits: string;
+  costInCredits: string;
   created: string;
   crew: string;
   edited: string;
   films: number[];
-  hyperdrive_rating: string;
+  hyperdriveRating: string;
   id: number;
   length: string;
   manufacturer: string;
-  max_atmosphering_speed: string;
+  maxAtmospheringSpeed: string;
   model: string;
   name: string;
   passengers: string;
   pilots: number[];
-  starship_class: string;
+  starshipClass: string;
   url: string;
 }
 export interface Film {
@@ -28,10 +28,10 @@ export interface Film {
   edited: string;
   episode_id: number;
   id: number;
-  opening_crawl: string;
+  openingCrawl: string;
   planets: number[];
   producer: string;
-  release_date: string;
+  releaseDate: string;
   species: number[];
   starships: number[];
   title: string;
@@ -57,13 +57,12 @@ export type PopupType = "person_details";
 
 export interface PopupData {
   name: PopupType;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  popupData?: any;
+  popupData?: Person;
   queue?: number;
 }
 
-export interface StarWarsPersonsData extends StarWarsPagination {
-  results: Person[];
+export interface StarWarsPersonsData<T> extends StarWarsPagination {
+  results: T;
 }
 
 export interface StarWarsPagination {
@@ -77,10 +76,10 @@ export interface Person {
   name: string;
   height: string;
   mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
+  hairColor: string;
+  skinColor: string;
+  eyeColor: string;
+  birthYear: string;
   gender: string;
   homeworld: number;
   films: number[];

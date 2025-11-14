@@ -1,4 +1,3 @@
-import { getPersons } from "@/api";
 import { Dispatch } from "redux";
 import { toast } from "react-toastify";
 import {
@@ -6,6 +5,7 @@ import {
   removeProcess,
 } from "../runningProcesses/runningProcessesSlice";
 import { setPersons } from "./starWarsSlice";
+import { getPersons } from "@/api/starWars";
 
 export const getPersonsOperation =
   (page: number, callback?: () => void) => async (dispatch: Dispatch) => {

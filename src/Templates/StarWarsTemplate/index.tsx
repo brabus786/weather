@@ -1,21 +1,26 @@
-import SkeletonLoader from "@/Components/SceletonLoader";
+import SkeletonLoader from "@/Components/SkeletonLoader";
 import { useProcessWatcher } from "@/hooks/useProcessWatcher";
-import { StarWarsContext } from "@/pages/star-wars";
-import { useAppDispatch } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { addPopup } from "@/store/popups/popupsSlice";
 import { Pagination, Typography } from "@mui/material";
 import { FC, useContext, useRef } from "react";
 import styles from "./styles.module.scss";
+import { StarWarsContext } from "@/contexts/StarWarsContext";
 
 const StarWarsTemplate: FC = () => {
   const dispatch = useAppDispatch();
   const isLoading = useProcessWatcher("get_persons");
   const listRef = useRef<HTMLDivElement | null>(null);
 
+  // Select persons and pagination from Redux store
+  const { persons, pagination } = useAppSelector(
+    (state) => state.starWarsSlice
+  );
+
   const context = useContext(StarWarsContext);
   if (!context) return null;
 
-  const { persons, pagination, query, paginationHandler } = context;
+  const { query, paginationHandler } = context;
 
   const count = pagination ? Math.ceil(pagination.count / 10) : 0;
 

@@ -11,10 +11,10 @@ const HeroNode: FC<NodeProps<Person>> = ({ data: person }) => {
       <ul className={styles.details}>
         <li>Height: {person?.height} cm</li>
         <li>Mass: {person?.mass} Kg</li>
-        <li>Hair Color: {person?.hair_color}</li>
-        <li>Skin Color: {person?.skin_color}</li>
-        <li>Eye Color: {person?.eye_color}</li>
-        <li>Birth Year: {person?.birth_year}</li>
+        <li>Hair Color: {person?.hairColor}</li>
+        <li>Skin Color: {person?.skinColor}</li>
+        <li>Eye Color: {person?.eyeColor}</li>
+        <li>Birth Year: {person?.birthYear}</li>
         <li>Gender: {person?.gender}</li>
       </ul>
       <Handle type="source" position={Position.Right} id="a" />

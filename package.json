@@ -26,6 +26,7 @@
     "@types/node-geocoder": "^4.2.6",
     "@vis.gl/react-google-maps": "^1.6.1",
     "axios": "^1.13.0",
+    "camelcase-keys": "^10.0.1",
     "classnames": "^2.5.1",
     "core-js": "^3.46.0",
     "dateformat": "^5.0.3",

@@ -13,7 +13,7 @@ const StarshipNode: FC<NodeProps<Starship>> = ({ data }) => {
       <ul className={styles.details}>
         <li>Model: {data.model}</li>
         <li>Manufacturer: {data.manufacturer}</li>
-        <li>Cost: {data.cost_in_credits} credits</li>
+        <li>Cost: {data.costInCredits} credits</li>
       </ul>
     </div>
   );

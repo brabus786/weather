@@ -5,7 +5,7 @@ import { dateAppFormat } from "@/utils/dateAppFormat";
 import { calculateDewPoint } from "@/utils/calculateDewPoint";
 import { getWindDirection } from "@/utils/getWindDirection";
 import Image from "next/image";
-import SkeletonLoader from "../SceletonLoader";
+import SkeletonLoader from "../SkeletonLoader";
 
 interface Props {
   weather: Weather | null;
