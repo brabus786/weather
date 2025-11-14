@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const api = axios.create({
   baseURL:
-    process.env.NEXT_PUBLIC_SW_API_BASE_URL || "https://sw-api.starnavi.io/api",
+    process.env.NEXT_PUBLIC_SW_API_BASE_URL || "https://sw-api.starnavi.io",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
